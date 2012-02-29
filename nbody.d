@@ -1,0 +1,33 @@
+nbody.o nbody.i nbody.lst nbody.d : nbody.c $(CBE_SYSROOT)/usr/include/stdio.h \
+  $(CBE_SYSROOT)/usr/include/features.h \
+  $(CBE_SYSROOT)/usr/include/sys/cdefs.h \
+  $(CBE_SYSROOT)/usr/include/bits/wordsize.h \
+  $(CBE_SYSROOT)/usr/include/gnu/stubs.h \
+  $(CBE_SYSROOT)/usr/include/gnu/stubs-64.h \
+  /opt/cell/toolchain/lib/gcc/ppu/4.1.1/include/stddef.h \
+  $(CBE_SYSROOT)/usr/include/bits/types.h \
+  $(CBE_SYSROOT)/usr/include/bits/typesizes.h \
+  $(CBE_SYSROOT)/usr/include/libio.h \
+  $(CBE_SYSROOT)/usr/include/_G_config.h \
+  $(CBE_SYSROOT)/usr/include/wchar.h \
+  /opt/cell/toolchain/lib/gcc/ppu/4.1.1/include/stdarg.h \
+  $(CBE_SYSROOT)/usr/include/bits/stdio_lim.h \
+  $(CBE_SYSROOT)/usr/include/bits/sys_errlist.h \
+  $(CBE_SYSROOT)/usr/include/stdlib.h \
+  $(CBE_SYSROOT)/usr/include/sys/types.h \
+  $(CBE_SYSROOT)/usr/include/time.h \
+  $(CBE_SYSROOT)/usr/include/endian.h \
+  $(CBE_SYSROOT)/usr/include/bits/endian.h \
+  $(CBE_SYSROOT)/usr/include/sys/select.h \
+  $(CBE_SYSROOT)/usr/include/bits/select.h \
+  $(CBE_SYSROOT)/usr/include/bits/sigset.h \
+  $(CBE_SYSROOT)/usr/include/bits/time.h \
+  $(CBE_SYSROOT)/usr/include/sys/sysmacros.h \
+  $(CBE_SYSROOT)/usr/include/bits/pthreadtypes.h \
+  $(CBE_SYSROOT)/usr/include/alloca.h \
+  $(CBE_SYSROOT)/usr/include/math.h \
+  $(CBE_SYSROOT)/usr/include/bits/huge_val.h \
+  $(CBE_SYSROOT)/usr/include/bits/mathdef.h \
+  $(CBE_SYSROOT)/usr/include/bits/mathcalls.h \
+  /opt/cell/toolchain/lib/gcc/ppu/4.1.1/include/altivec.h \
+  /opt/cell/toolchain/lib/gcc/ppu/4.1.1/include/ppu_intrinsics.h

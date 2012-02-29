@@ -1,0 +1,6 @@
+Requries an installation of the Cell SDK in order to build.
+
+Build instructions:
+
+export CELL_TOP=/opt/cell/sdk/
+make
