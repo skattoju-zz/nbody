@@ -28,6 +28,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #include <altivec.h>
 #include <time.h>
 #include <ppu_intrinsics.h>
+#include <time.h>
 
 #define NO_OF_PARTICLES 100 /* number of particles (multiple of 4) */
 #define INIT_BOUNDING_BOX 100 /* initial positions are bounded */
@@ -35,6 +36,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #define EPS2 2000 /* softening factor */
 #define COMPUTE_ITERATIONS 100 /* no of iterations to compute*/
 #define TIME_STEP 0.1 /* time step */
+#define GRAV_CONST 1
 
 #define EPS2_VECTOR (__vector float){EPS2,EPS2,EPS2,EPS2}
 #define VECINTZERO (__vector int){0,0,0,0}
@@ -231,9 +233,9 @@ void render(particle* system){
    float *vel = (float*) &system[i].velocity;
    float *acc = (float*) &system[i].acceleration;
 
-   printf("position : %f %f %f ", pos[0], pos[1], pos[2]);
-   printf("velocity : %f %f %f ", vel[0], vel[1], vel[2]);
-   printf("acceleration : %f %f %f \n", acc[0], acc[1], acc[2]);
+   //printf("position : %f %f %f ", pos[0], pos[1], pos[2]);
+   //printf("velocity : %f %f %f ", vel[0], vel[1], vel[2]);
+   //printf("acceleration : %f %f %f \n", acc[0], acc[1], acc[2]);
 
  }
 }
@@ -252,15 +254,17 @@ int main ()
  init_particles(particle_system);
 
  /* run simulation */
- float simulationTime = 0.0;
+ //float simulationTime = 0.0;
  int iterations = COMPUTE_ITERATIONS;
- printf("----------------------------------------------");
- printf("----------------------------------------------\n");
- printf("Running Simulation with %d particles & %d iterations with %f seconds time steps\n",
-	NO_OF_PARTICLES, COMPUTE_ITERATIONS, TIME_STEP);
- printf("----------------------------------------------");
- printf("----------------------------------------------\n");
+ //printf("----------------------------------------------");
+ //printf("----------------------------------------------\n");
+ //printf("Running Simulation with %d particles & %d iterations with %f seconds time steps\n",
+ //	NO_OF_PARTICLES, COMPUTE_ITERATIONS, TIME_STEP);
+ //printf("----------------------------------------------");
+ //printf("----------------------------------------------\n");
 
+ clock_t start = clock();
+ 
  while(iterations > 0){
 
    /* Compute */
@@ -270,16 +274,18 @@ int main ()
    render(particle_system);
 
    /* Update Time */
-   simulationTime = simulationTime + TIME_STEP;
-   printf("----------------------------------");
-   printf("Simulation Time: %f |",simulationTime);
-   quad_count = get_quadrant_count(particle_system);
-   qc = (int*)&quad_count;
-   printf(" q1:%d q2:%d q3:%d q4:%d",qc[0], qc[1], qc[2], qc[3]);
-   printf("----------------------------------\n");
+   //simulationTime = simulationTime + TIME_STEP;
+   //printf("----------------------------------");
+   //printf("Simulation Time: %f |",simulationTime);
+   //quad_count = get_quadrant_count(particle_system);
+   //qc = (int*)&quad_count;
+   //printf(" q1:%d q2:%d q3:%d q4:%d",qc[0], qc[1], qc[2], qc[3]);
+   //printf("----------------------------------\n");
 
    iterations --;
  }
+ 
+ printf("Time elapsed: %f\n", ((double)clock() - start) / CLOCKS_PER_SEC);
 
  return 0;
 }
