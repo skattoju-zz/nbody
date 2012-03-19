@@ -1,0 +1,22 @@
+Requries an installation of the Cell SDK in order to build.
+
+Build instructions:
+
+export CELL_TOP=/opt/cell/sdk/
+make
+
+Start systemsim-cell in linux:
+
+cd /opt/ibm/systemsim-cell/run/cell/linux
+sudo ../run_gui
+
+Execute code on the Simulator:
+
+//on your host machine run:
+cp executable /tmp/
+
+//on the simulator run:
+callthru source /tmp/executable > executable && chmod +x executable && ./execuatble
+Hello World!
+
+Source:http://ww2.cs.fsu.edu/~west/cell/index.php?tutorial=configfirst
