@@ -1,6 +1,6 @@
-/* COMP 426 Assignment 1
+/* COMP 426 Assignment 2
 *
-* The following is an N-Body simulation that runs on the PPE of the Cell B.E.
+* This program is a rudimentary N-Body simulation that runs on the PPE & SPEs of the Cell B.E.
 * 100 particles are placed randomly in four quadrants of 100 unit cube.
 * Forces (Due to gravity) between them are computed and their position velocity
 * and acceleration are updated at each iteration.
@@ -25,36 +25,25 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <altivec.h>
 #include <time.h>
+#include <errno.h>
+#include <pthread.h>
 #include <ppu_intrinsics.h>
+#include <libspe2.h>
+#include <altivec.h>
+#include "nbody.h"
 
-#define NO_OF_PARTICLES 100 /* number of particles (multiple of 4) */
-#define INIT_BOUNDING_BOX 100 /* initial positions are bounded */
-#define MASS_OF_PARTICLES 1.0 /* mass */
-#define EPS2 2000 /* softening factor */
-#define COMPUTE_ITERATIONS 100 /* no of iterations to compute*/
-#define TIME_STEP 0.1 /* time step */
+extern spe_program_handle_t nbody_spu;
 
-#define EPS2_VECTOR (__vector float){EPS2,EPS2,EPS2,EPS2}
-#define VECINTZERO (__vector int){0,0,0,0}
-#define VECZERO (__vector float){0.0,0.0,0.0,0.0}
-#define VECONE (__vector float){1.0,1.0,1.0,1.0}
-#define VEC3ZERO (__vector float){0.0,0.0,0.0,1.0}
-#define VECHALF (__vector float){0.5, 0.5, 0.5, 0.5}
-#define MASS_VECTOR (__vector float){MASS_OF_PARTICLES,MASS_OF_PARTICLES,MASS_OF_PARTICLES,MASS_OF_PARTICLES}
-#define TIME_STEP_VECTOR (__vector float){TIME_STEP,TIME_STEP,TIME_STEP,TIME_STEP}
-#define TIME_SQUARED vec_madd(TIME_STEP_VECTOR,TIME_STEP_VECTOR,VECZERO)
+typedef struct{
 
-/* particle struct */
-typedef struct
-{
- __vector float position;
- __vector float velocity;
- __vector float acceleration;
- __vector float mass; //padding in order to byte align 64
-
-}particle;
+	particle* system;
+	int start_index;
+	int end_index;
+	int tag;
+	spe_context_ptr_t ctx;
+	
+}spu_args_t;
 
 /* util functions */
 void debug_print_float_vector(__vector float var, char* name){
@@ -157,8 +146,7 @@ distSixth, invDistCube;
 
 }
 
-
-void update_particles(particle* system){
+void update_particles_ppu(particle* system){
 
  int i, j;
 
@@ -192,51 +180,123 @@ void update_particles(particle* system){
 
 }
 
+void* ppu_pthread_function(void *arg) {
+  
+  spu_args_t spe_args;
+  spe_stop_info_t stop_info;
+  unsigned int entry = SPE_DEFAULT_ENTRY;
+
+  printf("running spe context \n");
+  
+  spe_args = *((spu_args_t *)arg);
+  
+  printf("spe tag %d \n",spe_args.tag);
+  printf("spe ctx %x \n",spe_args.ctx);
+  printf("spe start %d \n",spe_args.start_index);
+  printf("spe end %d \n",spe_args.end_index);
+  printf("spe system %x \n",spe_args.system);
+  
+  if (spe_context_run(spe_args.ctx, &entry, 0, &spe_args, NULL, &stop_info) < 0) {
+    perror ("Failed running context");
+    exit (1);
+  }
+  pthread_exit(NULL);
+}
+
+//distribute things to the spu's
+void update_particles_spu(particle* system, int spu_count){
+
+
+	  int i;
+	  spu_args_t spu_args[spu_count];
+	  pthread_t threads[spu_count];
+	  	  
+	  /* Create several SPE-threads to execute 'nbody_spu'.*/
+	  for(i=0; i<spu_count; i++) {
+		  
+		printf("creating spu context %d \n",i);
+
+	    /* Create context */
+	    if ((spu_args[i].ctx = spe_context_create (0, NULL)) == NULL) {
+	      perror ("Failed creating context");
+	      exit (1);
+	    }
+		
+	    printf("loading spu image %d \n",i);
+
+	    /* Load program into context */
+	    if (spe_program_load (spu_args[i].ctx, &nbody_spu)) {
+	      perror ("Failed loading program");
+	      exit (1);
+	    }
+	    
+	    printf("loading params %d \n",i);
+	    
+	    /* update params to pass to the spe */
+	    spu_args[i].system = system;
+	    spu_args[i].start_index = 0;
+	    spu_args[i].end_index = NO_OF_PARTICLES/spu_count;
+	    spu_args[i].tag = i;
+	    
+	    printf("creating threads %d \n",i);
+	    
+	    /* Create thread for each SPE context */
+	    if (pthread_create(&threads[i], NULL, &ppu_pthread_function, &spu_args[i]))  {
+	      perror ("Failed creating thread");
+	      exit (1);
+	    }
+	  }
+
+	  /* Wait for SPU-thread to complete execution.  */
+	  for (i=0; i<SPU_THREADS; i++) {
+		
+		printf("joining threads %d \n",i);
+		  
+	    if (pthread_join (threads[i], NULL)) {
+	      perror("Failed pthread_join");
+	      exit (1);
+	    }
+
+	    /* Destroy context */
+	    if (spe_context_destroy (spu_args[i].ctx) != 0) {
+	      perror("Failed destroying context");
+	      exit (1);
+	    }
+	  }
+
+	  printf("\nThe spu distribute has successfully executed.\n");
+
+}
+
+//run this on the ppe
 __vector int get_quadrant_count(particle* system){
  
- /* reset count */
-  __vector int quad_count = VECINTZERO;
-  __vector int quad_mask = VECINTZERO;
- int i;
- for(i = 0; i < NO_OF_PARTICLES ; i++){
-
-         __vector int top2 = (__vector int){1,1,0,0};
-         __vector int bottom2 = (__vector int){0,0,1,1};
-         __vector int left2 = (__vector int){0,1,0,1};
-         __vector int right2 = (__vector int){1,0,1,0};
-	 __vector int mask1, mask2;
-   
-         __vector float vx = vec_splat(system[i].position,0);
-         __vector float vy = vec_splat(system[i].position,1);
-	 
-	 mask1 = vec_sel(right2, left2, vec_cmpgt(vx,VECZERO));
-	 //debug_print_int_vector(mask1,"mask1");
-	 mask2 = vec_sel(top2, bottom2, vec_cmpgt(vy,VECZERO));
-	 //debug_print_int_vector(mask2,"mask2");
-         quad_mask = vec_and(mask1,mask2);
-         //debug_print_int_vector(quad_mask,"quad_mask");
-	 quad_count = vec_add(quad_count,quad_mask);
-	 //debug_print_int_vector(quad_count,"quad_count");
-	 
-       /*
-   if(pos[0] > 0 && pos[1] > 0){
-     quad[0] = quad[0]+1;
-   }
-
-   if(pos[0] < 0 && pos[1] > 0){
-      quad[1] = quad[1]+1;
-   }
-
-   if(pos[0] < 0 && pos[1] < 0){
-      quad[2] = quad[2]+1;
-   }
-
-   if(pos[0] > 0 && pos[1] < 0){
-      quad[3] = quad[3]+1;
-   }
-   */
- }
- return quad_count;
+	 /* reset count */
+	  __vector int quad_count = VECINTZERO;
+	  __vector int quad_mask = VECINTZERO;
+	 int i;
+	 for(i = 0; i < NO_OF_PARTICLES ; i++){
+	
+		 __vector int top2 = (__vector int){1,1,0,0};
+	     __vector int bottom2 = (__vector int){0,0,1,1};
+	     __vector int left2 = (__vector int){0,1,0,1};
+	     __vector int right2 = (__vector int){1,0,1,0};
+	     __vector int mask1, mask2;
+	   
+	     __vector float vx = vec_splat(system[i].position,0);
+	     __vector float vy = vec_splat(system[i].position,1);
+	
+		mask1 = vec_sel(right2, left2, vec_cmpgt(vx,VECZERO));
+		//debug_print_int_vector(mask1,"mask1");
+		mask2 = vec_sel(top2, bottom2, vec_cmpgt(vy,VECZERO));
+		//debug_print_int_vector(mask2,"mask2");
+		quad_mask = vec_and(mask1,mask2);
+		//debug_print_int_vector(quad_mask,"quad_mask");
+		quad_count = vec_add(quad_count,quad_mask);
+		//debug_print_int_vector(quad_count,"quad_count");
+	
+	 }
+	 return quad_count;
 }
 
 void render(particle* system){
@@ -274,14 +334,14 @@ int main ()
  printf("----------------------------------------------");
  printf("----------------------------------------------\n");
  printf("Running Simulation with %d particles & %d iterations with %f seconds time steps\n",
-	NO_OF_PARTICLES, COMPUTE_ITERATIONS, TIME_STEP);
+NO_OF_PARTICLES, COMPUTE_ITERATIONS, TIME_STEP);
  printf("----------------------------------------------");
  printf("----------------------------------------------\n");
 
  while(iterations > 0){
 
    /* Compute */
-   update_particles(particle_system);
+   update_particles_spu(particle_system, 4);
 
    /* Display */
    render(particle_system);

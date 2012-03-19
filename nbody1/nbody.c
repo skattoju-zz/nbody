@@ -29,12 +29,12 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #include <time.h>
 #include <ppu_intrinsics.h>
 
-#define NO_OF_PARTICLES 100 /* number of particles (multiple of 4) */
-#define INIT_BOUNDING_BOX 100 /* initial positions are bounded */
-#define MASS_OF_PARTICLES 1.0 /* mass */
-#define EPS2 2000 /* softening factor */
-#define COMPUTE_ITERATIONS 100 /* no of iterations to compute*/
-#define TIME_STEP 0.1 /* time step */
+#define NO_OF_PARTICLES 1000	/* number of particles (multiple of 4) */
+#define INIT_BOUNDING_BOX 100	/* initial positions are bounded */
+#define MASS_OF_PARTICLES 1.0	/* mass */
+#define EPS2 2000 		/* softening factor */
+#define COMPUTE_ITERATIONS 100 	/* no of iterations to compute*/
+#define TIME_STEP 0.1 		/* time step */
 
 #define EPS2_VECTOR (__vector float){EPS2,EPS2,EPS2,EPS2}
 #define VECINTZERO (__vector int){0,0,0,0}
@@ -90,8 +90,8 @@ void init_particles(particle* system){
    system[i].position = (__vector float){rand()%INIT_BOUNDING_BOX,
 rand()%INIT_BOUNDING_BOX,
 (rand()%INIT_BOUNDING_BOX*2)-INIT_BOUNDING_BOX, 0};
-   system[i].velocity = (__vector float){0,0,0,0};
-   system[i].acceleration = (__vector float){0,0,0,0};
+   system[i].velocity = VECZERO;
+   system[i].acceleration = VECZERO;
  }
 
  // q2 x<0, y>0
@@ -99,11 +99,8 @@ rand()%INIT_BOUNDING_BOX,
    system[i].position = (__vector float){-rand()%INIT_BOUNDING_BOX,
 rand()%INIT_BOUNDING_BOX,
 (rand()%INIT_BOUNDING_BOX*2)-INIT_BOUNDING_BOX, 0};
-   system[i].velocity = (__vector float){0,0,0,0};
-   system[i].acceleration = (__vector float){0,0,0,0};
-
-   //debug_print_float_vector(particle_system[i].position,"particle_system[i].position");
-
+   system[i].velocity = VECZERO;
+   system[i].acceleration = VECZERO;
  }
 
  // q3 x<0, y<0
@@ -112,9 +109,8 @@ rand()%INIT_BOUNDING_BOX,
    system[i].position = (__vector float){-rand()%INIT_BOUNDING_BOX,
 -rand()%INIT_BOUNDING_BOX,
 (rand()%INIT_BOUNDING_BOX*2)-INIT_BOUNDING_BOX, 0};
-   system[i].velocity = (__vector float){0,0,0,0};
-   system[i].acceleration = (__vector float){0,0,0,0};
-
+   system[i].velocity = VECZERO;
+   system[i].acceleration = VECZERO;
  }
 
  // q4 x>0, y<0
@@ -123,8 +119,8 @@ rand()%INIT_BOUNDING_BOX,
    system[i].position = (__vector float){rand()%INIT_BOUNDING_BOX,
 -rand()%INIT_BOUNDING_BOX,
 (rand()%INIT_BOUNDING_BOX*2)-INIT_BOUNDING_BOX, 0};
-   system[i].velocity = (__vector float){0,0,0,0};
-   system[i].acceleration = (__vector float){0,0,0,0};
+   system[i].velocity = VECZERO;
+   system[i].acceleration = VECZERO;
 
  }
 
@@ -141,7 +137,6 @@ distSixth, invDistCube;
  radius_sqr = vec_madd(radius,radius, VECZERO);
  distSqr = vec_add(vec_splat(radius_sqr,0),vec_splat(radius_sqr,1));
  distSqr = vec_add(vec_splat(radius_sqr,2),distSqr);
- distSqr = vec_add(vec_splat(radius_sqr,3),distSqr);
  distSqr = vec_add(EPS2_VECTOR,distSqr);
  distSixth = vec_madd(distSqr,distSqr,VECZERO);
  distSixth = vec_madd(distSixth,distSqr,VEC3ZERO);
@@ -194,7 +189,6 @@ void update_particles(particle* system){
 
 __vector int get_quadrant_count(particle* system){
  
- /* reset count */
   __vector int quad_count = VECINTZERO;
   __vector int quad_mask = VECINTZERO;
  int i;
@@ -210,13 +204,9 @@ __vector int get_quadrant_count(particle* system){
          __vector float vy = vec_splat(system[i].position,1);
 	 
 	 mask1 = vec_sel(right2, left2, vec_cmpgt(vx,VECZERO));
-	 //debug_print_int_vector(mask1,"mask1");
 	 mask2 = vec_sel(top2, bottom2, vec_cmpgt(vy,VECZERO));
-	 //debug_print_int_vector(mask2,"mask2");
          quad_mask = vec_and(mask1,mask2);
-         //debug_print_int_vector(quad_mask,"quad_mask");
 	 quad_count = vec_add(quad_count,quad_mask);
-	 //debug_print_int_vector(quad_count,"quad_count");
 	 
  }
  return quad_count;
@@ -267,7 +257,7 @@ int main ()
    update_particles(particle_system);
 
    /* Display */
-   render(particle_system);
+   //render(particle_system);
 
    /* Update Time */
    simulationTime = simulationTime + TIME_STEP;

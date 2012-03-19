@@ -1,0 +1,25 @@
+nbody_spu.o nbody_spu.i nbody_spu.lst nbody_spu.d : nbody_spu.c $(CBE_SYSROOT)/usr/spu/include/stdio.h \
+  $(CBE_SYSROOT)/usr/spu/include/_ansi.h \
+  $(CBE_SYSROOT)/usr/spu/include/newlib.h \
+  $(CBE_SYSROOT)/usr/spu/include/sys/config.h \
+  $(CBE_SYSROOT)/usr/spu/include/machine/ieeefp.h \
+  /opt/cell/toolchain/lib/gcc/spu/4.1.1/include/stddef.h \
+  /opt/cell/toolchain/lib/gcc/spu/4.1.1/include/stdarg.h \
+  $(CBE_SYSROOT)/usr/spu/include/sys/reent.h \
+  $(CBE_SYSROOT)/usr/spu/include/_ansi.h \
+  $(CBE_SYSROOT)/usr/spu/include/sys/_types.h \
+  $(CBE_SYSROOT)/usr/spu/include/machine/_types.h \
+  $(CBE_SYSROOT)/usr/spu/include/machine/_default_types.h \
+  $(CBE_SYSROOT)/usr/spu/include/sys/lock.h \
+  $(CBE_SYSROOT)/usr/spu/include/sys/custom_file.h \
+  $(CBE_SYSROOT)/usr/spu/include/sys/types.h \
+  $(CBE_SYSROOT)/usr/spu/include/machine/types.h \
+  $(CBE_SYSROOT)/usr/spu/include/sys/features.h \
+  $(CBE_SYSROOT)/usr/spu/include/sys/stdio.h \
+  $(CBE_SYSROOT)/usr/spu/include/stdlib.h \
+  $(CBE_SYSROOT)/usr/spu/include/machine/stdlib.h \
+  $(CBE_SYSROOT)/usr/spu/include/alloca.h \
+  /opt/cell/toolchain/lib/gcc/spu/4.1.1/include/spu_intrinsics.h \
+  /opt/cell/toolchain/lib/gcc/spu/4.1.1/include/spu_internals.h \
+  /opt/cell/toolchain/lib/gcc/spu/4.1.1/include/spu_mfcio.h \
+  $(CBE_SYSROOT)/usr/spu/include/stdint.h ../nbody.h
