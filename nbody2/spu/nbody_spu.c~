@@ -88,7 +88,7 @@ int main(unsigned long long speid __attribute__ ((unused)),
 //	printf("SPE%d: computer interactions \n",spu_args.tag);
 	/* compute */
 	int i , j;
-	for(i = spu_args.start_index;i<=spu_args.end_index;i++){
+	for(i = spu_args.start_index;i=<spu_args.end_index;i++){
 		for(j = 0;j<NO_OF_PARTICLES;j++){
 			compute_interaction(&spu_args.particle_system[i],&spu_args.particle_system[j]);
 		}

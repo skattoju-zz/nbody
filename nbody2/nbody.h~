@@ -1,13 +1,13 @@
 #ifndef NBODY_H_
 #define NBODY_H_
 
-#define NO_OF_PARTICLES 128 /* number of particles (multiple of 4) */
+#define NO_OF_PARTICLES 100 /* number of particles (multiple of 4) */
 #define INIT_BOUNDING_BOX 100 /* initial positions are bounded */
 #define MASS_OF_PARTICLES 1.0 /* mass */
 #define EPS2 2000 /* softening factor */
 #define COMPUTE_ITERATIONS 100 /* no of iterations to compute*/
 #define TIME_STEP 0.1 /* time step */
-#define SPU_THREADS 4
+#define SPU_THREADS	4
 
 #define EPS2_VECTOR (__vector float){EPS2,EPS2,EPS2,EPS2}
 #define VECINTZERO (__vector int){0,0,0,0}
