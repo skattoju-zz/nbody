@@ -1,0 +1,2 @@
+/usr/bin/ar cr libpart2.a  CMakeFiles/part2.dir/cll.cpp.o CMakeFiles/part2.dir/part2.cpp.o CMakeFiles/part2.dir/util.cpp.o
+/usr/bin/ranlib libpart2.a

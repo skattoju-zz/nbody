@@ -1,0 +1,2 @@
+/home/sid/code/nbody3/CMakeFiles/part2.dir
+/home/sid/code/nbody3/CMakeFiles/part2.x.dir
