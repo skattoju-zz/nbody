@@ -1,0 +1,39 @@
+﻿Build started 13/04/2012 3:54:47 PM.
+     1>Project "C:\ProgramData\NVIDIA Corporation\NVIDIA GPU Computing SDK\OpenCL\src\oclSimpleGL\oclSimpleGL.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\oclSimpleGL.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I../../common/inc/ /I../../../shared/inc/ /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt oclSimpleGL.cpp
+         oclSimpleGL.cpp
+         Note: including windows.h
+         Note: including math.h
+         Note: including assert.h
+         Note: including rendercheckGL.h
+         Note: including <vector>
+         Note: including <map>
+         Note: including <string>
+         Note: including GL/glew.h
+         Note: including GL/glut.h
+         Note: including lib: glut32.lib
+         
+         Note: including shrUtils.h
+         Note: including opencl.h
+       ManifestResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\oclSimpleGL.exe.embed.manifest.res" Debug\oclSimpleGL_manifest.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\..\bin\Win32\Debug\oclSimpleGL.exe" /INCREMENTAL /NOLOGO /LIBPATH:../../common/lib/ /LIBPATH:../../../shared/lib /LIBPATH:../../common/lib/Win32/ oclUtils32D.lib shrUtils32D.lib glew32.lib glut32.lib OpenCL.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\oclSimpleGL.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\ProgramData\NVIDIA Corporation\NVIDIA GPU Computing SDK\OpenCL\bin\Win32\Debug\oclSimpleGL.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\..\bin\Win32\Debug\oclSimpleGL.lib" /MACHINE:X86 Debug\oclSimpleGL.exe.embed.manifest.res
+         Debug\oclSimpleGL.obj
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\oclSimpleGL.exe.embed.manifest" /manifest Debug\oclSimpleGL.exe.intermediate.manifest
+         All outputs are up-to-date.
+       LinkEmbedManifest:
+         All outputs are up-to-date.
+         oclSimpleGL.vcxproj -> C:\ProgramData\NVIDIA Corporation\NVIDIA GPU Computing SDK\OpenCL\src\oclSimpleGL\..\..\bin\Win32\Debug\oclSimpleGL.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\oclSimpleGL.unsuccessfulbuild".
+         Touching "Debug\oclSimpleGL.lastbuildstate".
+     1>Done Building Project "C:\ProgramData\NVIDIA Corporation\NVIDIA GPU Computing SDK\OpenCL\src\oclSimpleGL\oclSimpleGL.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.18

@@ -2,6 +2,8 @@
 
 #include "cll.h"
 #include "util.h"
+#include <unistd.h>
+
 
 #include <vector>
 
@@ -65,6 +67,11 @@ void CL::popCorn()
     }
     //Wait for the command queue to finish these commands before proceeding
     queue.finish();
+    
+    //get new position data from the gpu.
+    
+    
+    
 }
 
 
@@ -80,7 +87,8 @@ void CL::runKernel()
     //printf("acquire: %s\n", oclErrorString(err));
     queue.finish();
 
-    float dt = 0.0001f;
+    float dt = 0.000001f;
+    usleep(500);
     kernel.setArg(5, dt); //pass in the timestep
     //execute the kernel
     err = queue.enqueueNDRangeKernel(kernel, cl::NullRange, cl::NDRange(num), cl::NullRange, NULL, &event); 

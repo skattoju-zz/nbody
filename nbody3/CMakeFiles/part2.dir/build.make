@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sid/code/nbody3
+CMAKE_SOURCE_DIR = /home/sid/code/nbody/nbody3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sid/code/nbody3
+CMAKE_BINARY_DIR = /home/sid/code/nbody/nbody3
 
 # Include any dependencies generated for this target.
 include CMakeFiles/part2.dir/depend.make
@@ -48,17 +48,17 @@ include CMakeFiles/part2.dir/flags.make
 
 CMakeFiles/part2.dir/cll.cpp.o: CMakeFiles/part2.dir/flags.make
 CMakeFiles/part2.dir/cll.cpp.o: cll.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/sid/code/nbody3/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sid/code/nbody/nbody3/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/part2.dir/cll.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/part2.dir/cll.cpp.o -c /home/sid/code/nbody3/cll.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/part2.dir/cll.cpp.o -c /home/sid/code/nbody/nbody3/cll.cpp
 
 CMakeFiles/part2.dir/cll.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/part2.dir/cll.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/sid/code/nbody3/cll.cpp > CMakeFiles/part2.dir/cll.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/sid/code/nbody/nbody3/cll.cpp > CMakeFiles/part2.dir/cll.cpp.i
 
 CMakeFiles/part2.dir/cll.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/part2.dir/cll.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/sid/code/nbody3/cll.cpp -o CMakeFiles/part2.dir/cll.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/sid/code/nbody/nbody3/cll.cpp -o CMakeFiles/part2.dir/cll.cpp.s
 
 CMakeFiles/part2.dir/cll.cpp.o.requires:
 .PHONY : CMakeFiles/part2.dir/cll.cpp.o.requires
@@ -71,17 +71,17 @@ CMakeFiles/part2.dir/cll.cpp.o.provides.build: CMakeFiles/part2.dir/cll.cpp.o
 
 CMakeFiles/part2.dir/part2.cpp.o: CMakeFiles/part2.dir/flags.make
 CMakeFiles/part2.dir/part2.cpp.o: part2.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/sid/code/nbody3/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sid/code/nbody/nbody3/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/part2.dir/part2.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/part2.dir/part2.cpp.o -c /home/sid/code/nbody3/part2.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/part2.dir/part2.cpp.o -c /home/sid/code/nbody/nbody3/part2.cpp
 
 CMakeFiles/part2.dir/part2.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/part2.dir/part2.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/sid/code/nbody3/part2.cpp > CMakeFiles/part2.dir/part2.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/sid/code/nbody/nbody3/part2.cpp > CMakeFiles/part2.dir/part2.cpp.i
 
 CMakeFiles/part2.dir/part2.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/part2.dir/part2.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/sid/code/nbody3/part2.cpp -o CMakeFiles/part2.dir/part2.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/sid/code/nbody/nbody3/part2.cpp -o CMakeFiles/part2.dir/part2.cpp.s
 
 CMakeFiles/part2.dir/part2.cpp.o.requires:
 .PHONY : CMakeFiles/part2.dir/part2.cpp.o.requires
@@ -94,17 +94,17 @@ CMakeFiles/part2.dir/part2.cpp.o.provides.build: CMakeFiles/part2.dir/part2.cpp.
 
 CMakeFiles/part2.dir/util.cpp.o: CMakeFiles/part2.dir/flags.make
 CMakeFiles/part2.dir/util.cpp.o: util.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/sid/code/nbody3/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sid/code/nbody/nbody3/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/part2.dir/util.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/part2.dir/util.cpp.o -c /home/sid/code/nbody3/util.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/part2.dir/util.cpp.o -c /home/sid/code/nbody/nbody3/util.cpp
 
 CMakeFiles/part2.dir/util.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/part2.dir/util.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/sid/code/nbody3/util.cpp > CMakeFiles/part2.dir/util.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/sid/code/nbody/nbody3/util.cpp > CMakeFiles/part2.dir/util.cpp.i
 
 CMakeFiles/part2.dir/util.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/part2.dir/util.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/sid/code/nbody3/util.cpp -o CMakeFiles/part2.dir/util.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/sid/code/nbody/nbody3/util.cpp -o CMakeFiles/part2.dir/util.cpp.s
 
 CMakeFiles/part2.dir/util.cpp.o.requires:
 .PHONY : CMakeFiles/part2.dir/util.cpp.o.requires
@@ -147,6 +147,6 @@ CMakeFiles/part2.dir/clean:
 .PHONY : CMakeFiles/part2.dir/clean
 
 CMakeFiles/part2.dir/depend:
-	cd /home/sid/code/nbody3 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sid/code/nbody3 /home/sid/code/nbody3 /home/sid/code/nbody3 /home/sid/code/nbody3 /home/sid/code/nbody3/CMakeFiles/part2.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/sid/code/nbody/nbody3 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sid/code/nbody/nbody3 /home/sid/code/nbody/nbody3 /home/sid/code/nbody/nbody3 /home/sid/code/nbody/nbody3 /home/sid/code/nbody/nbody3/CMakeFiles/part2.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/part2.dir/depend
 

@@ -25,32 +25,57 @@ __kernel void part2(__global float4* pos, __global float4* color, __global float
     //if the life is 0 or less we reset the particle's values back to the original values and set life to 1
     if(life <= 0)
     {
-        p = pos_gen[i];
-        v = vel_gen[i];
+       p.x = 0.0;
+       p.x = 0.0;
+       p.x = 0.0;
+      
+       v.x = 0.0;
+       v.y = 0.0;
+       v.z = 0.0;
         life = 10000.0;    
     }
 
     //compute acceleration
     int k;
     for(k=0;k<20000;k++){
-        //acc = 0.1;
+
+        //rad.x = p.x - pos[k].x;
+        //rad.y = p.y - pos[k].y;
+        //rad.z = p.z - pos[k].z;
+
+        //radsqr = rad.x*rad.x + rad.y*rad.y + rad.z*rad.z + 0.02;
+        //radsixth = radsqr*radsqr*radsqr;
+        //invradcubed = rsqrt(radsixth);
+
+        //acc.x += rad.x*invradcubed*6.673E-11;
+        //acc.y += rad.y*invradcubed*6.673E-11;
+        //acc.z += rad.z*invradcubed*6.673E-11;
+        
         rad = p - pos[k];
         radsqr = rad.x*rad.x + rad.y*rad.y + rad.z*rad.z + 0.1;
         radsixth = radsqr*radsqr*radsqr;
         invradcubed = rsqrt(radsixth);
         acc += rad*invradcubed*6.673E-11;
     }   
-    
-    //update position and velocity
-    v = acc*dt;
 
-    //update the position with the new velocity
+    //update the velocity
+    //v.x = acc.x*dt;
+    //v.y = acc.y*dt;
+    //v.z = acc.z*dt;
+    v = acc*dt*0.00005;
+
+    //update the position
+    //p.x = v.x*dt + 0.5*acc.x*dt*dt;
+    //p.y = v.y*dt + 0.5*acc.y*dt*dt;
+    //p.z = v.z*dt + 0.5*acc.z*dt*dt;
     p = v*dt + 0.5*acc*dt*dt;
 
     //update life
     v.w = life;
 
     //update the arrays with our newly computed values
+    pos_gen[i] = p;
+    vel_gen[i] = v;
     pos[i] = p;
     vel[i] = v;
     

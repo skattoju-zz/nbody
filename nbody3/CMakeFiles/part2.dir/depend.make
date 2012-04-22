@@ -4,12 +4,36 @@
 CMakeFiles/part2.dir/cll.cpp.o: cll.cpp
 CMakeFiles/part2.dir/cll.cpp.o: cll.h
 CMakeFiles/part2.dir/cll.cpp.o: util.h
+CMakeFiles/part2.dir/cll.cpp.o: opencl10/CL/cl.h
+CMakeFiles/part2.dir/cll.cpp.o: opencl10/CL/cl.hpp
+CMakeFiles/part2.dir/cll.cpp.o: opencl10/CL/cl_d3d10.h
+CMakeFiles/part2.dir/cll.cpp.o: opencl10/CL/cl_ext.h
+CMakeFiles/part2.dir/cll.cpp.o: opencl10/CL/cl_gl.h
+CMakeFiles/part2.dir/cll.cpp.o: opencl10/CL/cl_gl_ext.h
+CMakeFiles/part2.dir/cll.cpp.o: opencl10/CL/cl_platform.h
+CMakeFiles/part2.dir/cll.cpp.o: opencl10/CL/opencl.h
 
 CMakeFiles/part2.dir/part2.cpp.o: cll.h
 CMakeFiles/part2.dir/part2.cpp.o: part2.cpp
 CMakeFiles/part2.dir/part2.cpp.o: util.h
+CMakeFiles/part2.dir/part2.cpp.o: opencl10/CL/cl.h
+CMakeFiles/part2.dir/part2.cpp.o: opencl10/CL/cl.hpp
+CMakeFiles/part2.dir/part2.cpp.o: opencl10/CL/cl_d3d10.h
+CMakeFiles/part2.dir/part2.cpp.o: opencl10/CL/cl_ext.h
+CMakeFiles/part2.dir/part2.cpp.o: opencl10/CL/cl_gl.h
+CMakeFiles/part2.dir/part2.cpp.o: opencl10/CL/cl_gl_ext.h
+CMakeFiles/part2.dir/part2.cpp.o: opencl10/CL/cl_platform.h
+CMakeFiles/part2.dir/part2.cpp.o: opencl10/CL/opencl.h
 
 CMakeFiles/part2.dir/util.cpp.o: cll.h
 CMakeFiles/part2.dir/util.cpp.o: util.cpp
 CMakeFiles/part2.dir/util.cpp.o: util.h
+CMakeFiles/part2.dir/util.cpp.o: opencl10/CL/cl.h
+CMakeFiles/part2.dir/util.cpp.o: opencl10/CL/cl.hpp
+CMakeFiles/part2.dir/util.cpp.o: opencl10/CL/cl_d3d10.h
+CMakeFiles/part2.dir/util.cpp.o: opencl10/CL/cl_ext.h
+CMakeFiles/part2.dir/util.cpp.o: opencl10/CL/cl_gl.h
+CMakeFiles/part2.dir/util.cpp.o: opencl10/CL/cl_gl_ext.h
+CMakeFiles/part2.dir/util.cpp.o: opencl10/CL/cl_platform.h
+CMakeFiles/part2.dir/util.cpp.o: opencl10/CL/opencl.h
 

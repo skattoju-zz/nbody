@@ -44,10 +44,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sid/code/nbody3
+CMAKE_SOURCE_DIR = /home/sid/code/nbody/nbody3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sid/code/nbody3
+CMAKE_BINARY_DIR = /home/sid/code/nbody/nbody3
 
 #=============================================================================
 # Target rules for target CMakeFiles/part2.dir
@@ -56,7 +56,7 @@ CMAKE_BINARY_DIR = /home/sid/code/nbody3
 CMakeFiles/part2.dir/all:
 	$(MAKE) -f CMakeFiles/part2.dir/build.make CMakeFiles/part2.dir/depend
 	$(MAKE) -f CMakeFiles/part2.dir/build.make CMakeFiles/part2.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/sid/code/nbody3/CMakeFiles  1 2 3
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sid/code/nbody/nbody3/CMakeFiles  1 2 3
 	@echo "Built target part2"
 .PHONY : CMakeFiles/part2.dir/all
 
@@ -66,9 +66,9 @@ all: CMakeFiles/part2.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/part2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sid/code/nbody3/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sid/code/nbody/nbody3/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/part2.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sid/code/nbody3/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sid/code/nbody/nbody3/CMakeFiles 0
 .PHONY : CMakeFiles/part2.dir/rule
 
 # Convenience name for target.
@@ -91,7 +91,7 @@ clean: CMakeFiles/part2.dir/clean
 CMakeFiles/part2.x.dir/all: CMakeFiles/part2.dir/all
 	$(MAKE) -f CMakeFiles/part2.x.dir/build.make CMakeFiles/part2.x.dir/depend
 	$(MAKE) -f CMakeFiles/part2.x.dir/build.make CMakeFiles/part2.x.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/sid/code/nbody3/CMakeFiles  4
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sid/code/nbody/nbody3/CMakeFiles  4
 	@echo "Built target part2.x"
 .PHONY : CMakeFiles/part2.x.dir/all
 
@@ -101,9 +101,9 @@ all: CMakeFiles/part2.x.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/part2.x.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sid/code/nbody3/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sid/code/nbody/nbody3/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/part2.x.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sid/code/nbody3/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sid/code/nbody/nbody3/CMakeFiles 0
 .PHONY : CMakeFiles/part2.x.dir/rule
 
 # Convenience name for target.

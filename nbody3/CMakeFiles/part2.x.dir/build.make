@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sid/code/nbody3
+CMAKE_SOURCE_DIR = /home/sid/code/nbody/nbody3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sid/code/nbody3
+CMAKE_BINARY_DIR = /home/sid/code/nbody/nbody3
 
 # Include any dependencies generated for this target.
 include CMakeFiles/part2.x.dir/depend.make
@@ -48,17 +48,17 @@ include CMakeFiles/part2.x.dir/flags.make
 
 CMakeFiles/part2.x.dir/main.cpp.o: CMakeFiles/part2.x.dir/flags.make
 CMakeFiles/part2.x.dir/main.cpp.o: main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/sid/code/nbody3/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sid/code/nbody/nbody3/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/part2.x.dir/main.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/part2.x.dir/main.cpp.o -c /home/sid/code/nbody3/main.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/part2.x.dir/main.cpp.o -c /home/sid/code/nbody/nbody3/main.cpp
 
 CMakeFiles/part2.x.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/part2.x.dir/main.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/sid/code/nbody3/main.cpp > CMakeFiles/part2.x.dir/main.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/sid/code/nbody/nbody3/main.cpp > CMakeFiles/part2.x.dir/main.cpp.i
 
 CMakeFiles/part2.x.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/part2.x.dir/main.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/sid/code/nbody3/main.cpp -o CMakeFiles/part2.x.dir/main.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/sid/code/nbody/nbody3/main.cpp -o CMakeFiles/part2.x.dir/main.cpp.s
 
 CMakeFiles/part2.x.dir/main.cpp.o.requires:
 .PHONY : CMakeFiles/part2.x.dir/main.cpp.o.requires
@@ -106,6 +106,6 @@ CMakeFiles/part2.x.dir/clean:
 .PHONY : CMakeFiles/part2.x.dir/clean
 
 CMakeFiles/part2.x.dir/depend:
-	cd /home/sid/code/nbody3 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sid/code/nbody3 /home/sid/code/nbody3 /home/sid/code/nbody3 /home/sid/code/nbody3 /home/sid/code/nbody3/CMakeFiles/part2.x.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/sid/code/nbody/nbody3 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sid/code/nbody/nbody3 /home/sid/code/nbody/nbody3 /home/sid/code/nbody/nbody3 /home/sid/code/nbody/nbody3 /home/sid/code/nbody/nbody3/CMakeFiles/part2.x.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/part2.x.dir/depend
 

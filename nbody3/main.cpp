@@ -59,7 +59,7 @@ float rand_float(float mn, float mx)
 //----------------------------------------------------------------------
 int main(int argc, char** argv)
 {
-    printf("Hello, OpenCL\n");
+    printf("Test, OpenCL\n");
     //Setup our GLUT window and OpenGL related things
     //glut callback functions are setup here too
     init_gl(argc, argv);
@@ -81,11 +81,12 @@ int main(int argc, char** argv)
     for(int i = 0; i < num; i++)
     {
         //distribute the particles in a random circle around z axis
-        float rad = rand_float(.2, .5);
-        float x = rad*sin(2*3.14 * i/num);
-        float z = 0.0f;// -.1 + .2f * i/num;
-        float y = rad*cos(2*3.14 * i/num);
-        pos[i] = Vec4(x, y, z, 1.0f);
+//         float rad = rand_float(.2, .5);
+//         float x = rad*sin(2*3.14 * i/num);
+//         float z = 0.0f;// -.1 + .2f * i/num;
+//         float y = rad*cos(2*3.14 * i/num);
+//         pos[i] = Vec4(x, y, z, 1.0f);
+        pos[i] = Vec4(0.0, 0.0, 0.0, 1.0f);
         
         //give some initial velocity 
         //float xr = rand_float(-.1, .1);
@@ -125,6 +126,8 @@ void appRender()
     glEnable(GL_POINT_SMOOTH);
     glPointSize(5.);
     
+    //update particles
+    
     //printf("color buffer\n");
     glBindBuffer(GL_ARRAY_BUFFER, example->c_vbo);
     glColorPointer(4, GL_FLOAT, 0, 0);
@@ -163,7 +166,7 @@ void init_gl(int argc, char** argv)
 
     
     std::stringstream ss;
-    ss << "Adventures in OpenCL: Part 2, " << NUM_PARTICLES << " particles" << std::ends;
+    ss << "OpenCL nbody simulation: " << NUM_PARTICLES << " particles" << std::ends;
     glutWindowHandle = glutCreateWindow(ss.str().c_str());
 
     glutDisplayFunc(appRender); //main rendering function

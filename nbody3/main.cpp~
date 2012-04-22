@@ -85,18 +85,19 @@ int main(int argc, char** argv)
         float x = rad*sin(2*3.14 * i/num);
         float z = 0.0f;// -.1 + .2f * i/num;
         float y = rad*cos(2*3.14 * i/num);
-        pos[i] = Vec4(x, y, z, 1.0f);
+        //pos[i] = Vec4(x, y, z, 1.0f);
+	pos[i] = Vec4(0.0f, 0.0f, 0.0f, 1.0f);
         
         //give some initial velocity 
         //float xr = rand_float(-.1, .1);
         //float yr = rand_float(1.f, 3.f);
         //the life is the lifetime of the particle: 1 = alive 0 = dead
         //as you will see in part2.cl we reset the particle when it dies
-        float life_r = rand_float(0.f, 10000.f);
-        vel[i] = Vec4(0.0, 0.0, 0.0f, 10000.0f);
+        float life_r = rand_float(0.f, 100.f);
+        vel[i] = Vec4(0.0, 0.0, 0.0f, 100.0f);
 
         //just make them red and full alpha
-        color[i] = Vec4(1.0f, 0.0f,0.0f, 1.0f);
+        color[i] = Vec4(0.0f, 1.0f,0.0f, 1.0f);
     }
 
     //our load data function sends our initial values to the GPU
@@ -163,7 +164,7 @@ void init_gl(int argc, char** argv)
 
     
     std::stringstream ss;
-    ss << "Adventures in OpenCL: Part 2, " << NUM_PARTICLES << " particles" << std::ends;
+    ss << "N-body simulation using OpenCL: " << NUM_PARTICLES << " particles" << std::ends;
     glutWindowHandle = glutCreateWindow(ss.str().c_str());
 
     glutDisplayFunc(appRender); //main rendering function
@@ -183,7 +184,7 @@ void init_gl(int argc, char** argv)
     // projection
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(90.0, (GLfloat)window_width / (GLfloat) window_height, 0.1, 1000.0);
+    gluPerspective(90.0, (GLfloat)window_width / (GLfloat) window_height, 0.1, 10000.0);
 
     // set view matrix
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

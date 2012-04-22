@@ -1,0 +1,2 @@
+/usr/bin/ar cr liboclSimpleGL.a  CMakeFiles/oclSimpleGL.dir/utils.cpp.o
+/usr/bin/ranlib liboclSimpleGL.a
