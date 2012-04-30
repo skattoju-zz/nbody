@@ -1,4 +1,3 @@
-
 nbody1 and nobody2
 Requrie an installation of the Cell SDK in order to build.
 
@@ -24,3 +23,10 @@ Hello World!
 Source:http://ww2.cs.fsu.edu/~west/cell/index.php?tutorial=configfirst
 
 nbody3 and nbody4 require an installation of an OpenCL SDK (Intel or Nvidia) , OpenGL, GLUT and GLEW libraries.
+
+Build instructions:
+
+mkdir build
+cd build
+cmake ..
+make
